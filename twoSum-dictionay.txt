@@ -1,0 +1,27 @@
+public class Solution {
+    public int[] TwoSum(int[] nums, int target) {
+        //STEP 1- Scan then array and find if any target anumber is already present in the array
+        
+        // if not then take the first element and minus it with target number ,then find the 
+        //element if present , if not then move to next element
+        int[] ret=new int[2];
+        Dictionary<int,int> d=new Dictionary<int,int>();
+           for(int i=0;i<nums.Length;i++)
+           {
+               d.Add(i,nums[i]);
+           }
+        
+        for(int j=0;j<nums.Length;j++)
+        {
+            int remaining=target-nums[j];
+            if(d.ContainsValue(remaining))
+            {
+                int index=Array.IndexOf(d.Values.ToArray(),remaining);
+                ret[0]=index;
+                ret[1]=j;
+            }
+            
+        }
+        return ret;
+}
+}
